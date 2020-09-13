@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -ls | find . -name "*.gif" -type f | rev | cut -c 5- | rev | cut -d/ -f2
+ls -ls | find . -name "*.gif" -type f -printf '%f' | rev | cut -c 5- | rev
