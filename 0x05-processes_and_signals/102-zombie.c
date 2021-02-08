@@ -20,7 +20,6 @@ int main(void)
 		if (child_pid > 0)
 		{
 			printf("Zombie process created, PID: %u\n", child_pid);
-			sleep(1);
 		}
 		else
 		{
