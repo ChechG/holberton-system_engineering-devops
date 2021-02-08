@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Bash script that displays in list format all files
+for file in *
+do
+    echo "$file" | rev | cut -d '-' -f 1 | rev
+done
+
