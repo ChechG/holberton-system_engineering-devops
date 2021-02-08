@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # Comment
-trap "echo I hate the kill command" SIGTERM
+trap "echo I hate the kill command; rm /var/run/holbertonscript.pid; exit 0" SIGTERM
 trap "echo Y U no love me?!" SIGINT
 echo $$ > /var/run/holbertonscript.pid
 while :
 do
 echo "To infinity and beyond"
 done
-rm /var/run/holbertonscript.pid; exit 0
+trap "rm /var/run/holbertonscript.pid; exit 0" SIGQUIT
