@@ -1,15 +1,7 @@
 # Install nginx with puppet
 
-package {
-    ensure   => present,
-    provider => 'apt'
-    name     => 'nginx'
-}
-
-
-
-file_line { 'add line':
-  path   => '/etc/nginx/sites-available/default',
-  line   => "request as file, then\nadd_header X-Served-By $HOSTNAME",
-  match  => "request as file, then",
+exec { 'puppet_header':
+    command  =>  'sudo apt-get -y update; sudo apt-get -y install nginx;
+                sudo sed -i "46i\add_header X-Served-By $HOSTNAME ;" /etc/nginx/sites-available/default'
+    provider =>  shell,
 }
