@@ -2,9 +2,9 @@
 # Configure domain zone so subdomain www points to your lb ip
 
 if [ -z "$2" ]
-then
+  then
   sub=("www" "lb-01" "web-01" "web-02")
-  for i in ${sub[@]};
+  for i in "${sub[@]}";
   do
     LINE=$(dig ${i}.${1} | grep ${1} | tail -1)
     RECORD=$(echo "${LINE}" | awk '{print $4}')
