@@ -14,10 +14,10 @@ then
     SUB="www lb-01 web-01 web-02"
     for i in $SUB;
     do
-        sub "$1" "$i"
+        func "$1" "$i"
     done
   else
-    sub "$1" "$2"
+    func "$1" "$2"
 fi
 
 exit 0
