@@ -3,7 +3,6 @@
 sub (){
     SUBDOMAIN="$2"
     ALL="$2.$1"
-    DOMAIN="$1"
     LINE="$(dig "$ALL" | grep 'ANSWER SECTION' -A1 | awl 'NR==2')"
     RECORD=$(echo "$LINE" | awk '{print $4}')
     DESTINATION=$(echo "$LINE" | awk '{print $5}')
