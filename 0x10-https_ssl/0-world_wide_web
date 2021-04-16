@@ -2,7 +2,7 @@
 # Configure domain zone so subdomain www points to your lb ip
 
 sub () {
-    LINE="$(dig "$2"."$1" | grep "$1" | tail -1)"
+    LINE="$(dig "$2"."$1" | grep 'ANSWER SECTION' -A1 | awl 'NR==2')"
     RECORD=$(echo "$LINE" | awk '{print $4}')
     DESTINATION=$(echo "$LINE" | awk '{print $5}')
     echo "The subdomain $2 is a $RECORD record and points to $DESTINATION"
