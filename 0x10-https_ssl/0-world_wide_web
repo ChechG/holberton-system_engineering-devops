@@ -3,7 +3,7 @@
 sub (){
     SUBDOMAIN="$2"
     ALL="$2.$1"
-    LINE="$(dig "$ALL" | grep 'ANSWER SECTION' -A1 | awl 'NR==2')"
+    LINE="$(dig "$ALL" | grep 'ANSWER SECTION' -A1 | awk 'NR==2')"
     RECORD=$(echo "$LINE" | awk '{print $4}')
     DESTINATION=$(echo "$LINE" | awk '{print $5}')
     echo The subdomain "$SUBDOMAIN" is a "$RECORD" record and points to "$DESTINATION"
@@ -11,9 +11,10 @@ sub (){
 
 if [[ -z "$2" ]]
 then   
-    SUB_LIST="www lb-01 web-01 web-02"
-    for it in $SUB_LIST; do
-	sub "$1" "$it"
+    SUB="www lb-01 web-01 web-02"
+    for i in $SUB;
+    do
+	sub "$1" "$i"
     done
 else
     sub "$1" "$2"
