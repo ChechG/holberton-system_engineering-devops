@@ -2,11 +2,11 @@
 # Configure domain zone so sd points to your lb ip
 func (){
     SUBDOMAIN="$2"
-    ALL="$2.$1"
-    LINE="$(dig "$ALL" | grep 'ANSWER SECTION' -A1 | awk 'NR==2')"
-    RECORD=$(echo "$LINE" | awk '{print $4}')
-    DESTINATION=$(echo "$LINE" | awk '{print $5}')
-    echo The subdomain "$SUBDOMAIN" is a "$RECORD" record and points to "$DESTINATION"
+    COMPLETE="$2.$1"
+    INFO="$(dig "$COMPLETE" | grep 'ANSWER SECTION' -A1 | awk 'NR==2')"
+    IP=$(echo "$INFO" | awk '{print $5}')
+    RECORD=$(echo "$INFO" | awk '{print $4}')
+    echo The subdomain "$SUBDOMAIN" is a "$RECORD" record and points to "$IP"
 }
 
 if [[ -z "$2" ]]
