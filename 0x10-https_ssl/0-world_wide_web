@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Configure domain zone so subdomain www points to your lb ip
 func (){
-    DOMAIN="$1"
     SUBDOMAIN="$2"
     ALL="$2.$1"
     LINE="$(dig "$ALL" | grep 'ANSWER SECTION' -A1 | awk 'NR==2')"
