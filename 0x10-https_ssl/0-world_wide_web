@@ -4,7 +4,7 @@ sub (){
     SUBDOMAIN="$2"
     ALL="$2.$1"
     DOMAIN="$1"
-    LINE="$(dig "$ALL" | grep "$DOMAIN" | tail -1)"
+    LINE=$(dig "$ALL" | grep "$DOMAIN" | tail -1)
     RECORD=$(echo "$LINE" | awk '{print $4}')
     DESTINATION=$(echo "$LINE" | awk '{print $5}')
     echo The subdomain "$SUBDOMAIN" is a "$RECORD" record and points to "$DESTINATION"
