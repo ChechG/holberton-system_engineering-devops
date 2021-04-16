@@ -18,7 +18,7 @@ then
         sub "$1" "$i"
     done
 else
-  sub "$1" "$2"
+    sub "$1" "$2"
 fi
 
 exit 0
