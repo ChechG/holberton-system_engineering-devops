@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Configure domain zone so subdomain www points to your lb ip
 
-sub () {
+func (){
     DOMAIN="$1"
     SUBDOMAIN="$2"
     ALL="$2.$1"
