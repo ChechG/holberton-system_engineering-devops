@@ -13,10 +13,10 @@ if [[ -z "$2" ]]
 then   
     SUB_LIST="www lb-01 web-01 web-02"
     for it in $SUB_LIST; do
-	func "$1" "$it"
+	sub "$1" "$it"
     done
 else
-    func "$1" "$2"
+    sub "$1" "$2"
 fi
 
 exit 0
