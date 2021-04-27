@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+# Script runs whoami command under user passed as argument
