@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Generate a MySQLdump, create compressed archive out of it
+NOW=$(date +"%d-%m-%Y")
+mysqldump -u root -p$1 --opt tyrell_corp > backup.sql
+tar -czvf $NOW.tar.gz backup.sql
