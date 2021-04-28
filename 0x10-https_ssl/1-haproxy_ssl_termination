@@ -40,8 +40,8 @@ defaults
 
 backend web-backend
         balance roundrobin
-        server web1 35.237.166.41:80 check
-        server web2 35.243.221.13:80 check
+        server 2100-web-01 35.196.122.68:80 check
+        server 2100-web-02 35.185.85.221:80 check
 
 
 frontend http
@@ -50,13 +50,13 @@ frontend http
         default_backend web-backend
 
 frontend www-http
-        bind 35.229.96.44:80
+        bind 0.0.0.0:80
 
         reqadd X-Forwarded-Proto:\ http
         default_backend www-backend
 
 frontend www-https
-        bind 35.229.96.44:443 ssl crt /etc/haproxy/certs/www.chechgiudice.tech.pem
+        bind 0.0.0.0:443 ssl crt /etc/haproxy/certs/www.chechgiudice.tech.pem
         reqadd X-Forwarded-Proto:\ https
         acl letsencrypt-acl path_beg /.well-known/acme-challenge/
         use_backend letsencrypt-backend if letsencrypt-acl
