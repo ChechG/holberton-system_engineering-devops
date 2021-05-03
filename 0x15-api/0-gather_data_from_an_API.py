@@ -12,9 +12,9 @@ if __name__ == "__main__":
     work = 'https://jsonplaceholder.typicode.com/users/' + argv[1] + '/todos'
     tasks = 0
     t_done = 0
-    r_users = requests.get(users)
+    r_user = requests.get(users)
     r_work = requests.get(work)
-    dic_u = r_users.json()
+    dic_u = r_user.json()
     list_w = r_work.json()
     name = dic_u['name']
     for done in list_w:
