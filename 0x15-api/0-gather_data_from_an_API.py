@@ -16,7 +16,7 @@ if __name__ == "__main__":
     r_work = requests.get(work)
     dic_u = r_user.json()
     list_w = r_work.json()
-    name = dic_u['name']
+    name = dic_u.get("name")
     for done in list_w:
         tasks += 1
         if done["completed"] is True:
