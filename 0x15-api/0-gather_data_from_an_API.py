@@ -16,12 +16,12 @@ if __name__ == "__main__":
     r_work = requests.get(work)
     dic_u = r_user.json()
     list_w = r_work.json()
-    name = dic_u.get('name')
+    name = dic_u['name']
     for done in list_w:
         tasks += 1
-        if done.get('completed') is True:
+        if done["completed"] is True:
             t_done += 1
     print("Employee {} is done with tasks({}/{}):".format(name, t_done, tasks))
     for task in list_w:
-        if task.get('completed') is True:
-            print("\t{}".format(task["title"]))
+        if task["completed"] is True:
+            print("\t {}".format(task["title"]))
