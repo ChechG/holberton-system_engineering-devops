@@ -23,7 +23,7 @@ if __name__ == "__main__":
     my_dict = {}
     lista = []
     u_id = str(dic_u['id'])
-    u_name = dic_u['name']
+    u_name = dic_u['username']
     for w in list_w:
         dentro = {}
         dentro['task'] = w['title']
