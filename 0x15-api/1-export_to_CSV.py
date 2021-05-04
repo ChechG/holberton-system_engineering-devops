@@ -17,7 +17,7 @@ if __name__ == "__main__":
     dic_u = r_user.json()
     list_w = r_work.json()
     u_id = dic_u['id']
-    u_name = dic_u['username']
+    u_name = dic_u['name']
     with open(file_name, 'w', newline='') as file:
         writer = csv.writer(file, delimiter=",", quoting=csv.QUOTE_ALL)
         for done in list_w:
