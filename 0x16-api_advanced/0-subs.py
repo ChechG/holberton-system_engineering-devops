@@ -23,7 +23,8 @@ def number_of_subscribers(subreddit):
 
     headers = {'Authorization': token, 'User-Agent': 'chechApp'}
     response = requests.get(base_url + '/r/' + subreddit, headers=headers)
-    dict_u = response.json()
-    if response.status_code == 200:
+    if response:
+        dict_u = response.json()
         return dict_u['data']['children'][1]['data']['subreddit_subscribers']
-    return 0
+    else:
+        return 0
