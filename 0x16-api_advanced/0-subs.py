@@ -10,7 +10,7 @@ import requests.auth
 def number_of_subscribers(subreddit):
     base_url = 'https://www.reddit.com/'
     u = 'ChechG'
-    p = 'Au7kiul8l'
+    p = 'liverpool'
     u_id = 'u-ff2BP3dLBRIg'
     s_key = 'Hm0PSCGrsPGC0G5WNYWJHnP-hC8--A'
     data = {'grant_type': 'password', 'username': u, 'password': p}
