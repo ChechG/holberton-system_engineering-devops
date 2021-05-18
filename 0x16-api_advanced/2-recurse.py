@@ -40,6 +40,6 @@ def recurse(subreddit, hot_list=[]):
                 hot_list.append(dato)
                 if length < len_list - 1:
                     recurse(subreddit, hot_list)
-        return hot_list
+            return hot_list
     else:
         return None
