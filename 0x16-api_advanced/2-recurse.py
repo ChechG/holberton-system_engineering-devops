@@ -31,12 +31,11 @@ def recurse(subreddit, hot_list=[], nex=''):
 
     if res:
         dict_u = res.json()
-        dic = len(dict_u['data']['children'])
         for i in dict_u['data']['children']:
             hot_list.append(i['data']['title'])
-            nex = dict_u['data']['after']
-            if nex is not None:
-                recurse(subreddit, hot_list, nex)
+        nex = dict_u['data']['after']
+        if nex is not None:
+            recurse(subreddit, hot_list, nex)
         return hot_list
     else:
         return None
