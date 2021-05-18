@@ -8,7 +8,7 @@ import requests
 import requests.auth
 
 
-def recurse(subreddit, hot_list=[]):
+def recurse(subreddit, hot_list=[], nex=''):
     base_url = 'https://www.reddit.com/'
     u = 'ChechG'
     p = 'liverpool'
@@ -26,20 +26,17 @@ def recurse(subreddit, hot_list=[]):
     base_url = 'https://oauth.reddit.com'
 
     heads = {'Authorization': token, 'User-Agent': 'chechApp'}
-    res = requests.get(base_url + '/r/' + subreddit + '/hot', headers=heads)
+    res = requests.get(base_url + '/r/' + subreddit + '/hot.json?after=' + nex,
+                       headers=heads, allow_redirects=False)
 
     if res:
         dict_u = res.json()
-        length = len(hot_list)
-        dato = dict_u['data']['children'][length]['data']['title']
-        len_list = len(dict_u['data']['children'])
-        if len_list == 0:
-            return None
-        if length <= len_list - 1:
-            if dato not in hot_list:
-                hot_list.append(dato)
-                if length < len_list - 1:
-                    recurse(subreddit, hot_list)
-            return hot_list
+        dic = len(dict_u['data']['children'])
+        for i in dict_u['data']['children']:
+            hot_list.append(i['data']['title'])
+            nex = dict_u['data']['after']
+            if nex is not None:
+                recurse(subreddit, hot_list, nex)
+        return hot_list
     else:
         return None
