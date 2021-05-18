@@ -33,6 +33,8 @@ def recurse(subreddit, hot_list=[]):
         length = len(hot_list)
         dato = dict_u['data']['children'][length]['data']['title']
         len_list = len(dict_u['data']['children'])
+        if len_list == 0:
+            return None
         if length <= len_list - 1:
             if dato not in hot_list:
                 hot_list.append(dato)
