@@ -1,5 +1,5 @@
 # fin error and fix it ith puppet
-exec {
-    command  => 'sudo sed -i "s\phpp\p" /var/www/html/wp-settings.php',
-    provider =>  shell,
+exec { 'fix':
+    command  => 'sudo sed -i s/phpp/php/g /var/www/html/wp-settings.php',
+    provider =>  'shell',
 }
