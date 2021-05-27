@@ -1,0 +1,23 @@
+#/usr/bin/env bash
+# Serve what you built for AirBnB clone - Web dynamic on web-01.
+server {
+    listen 80;
+    server_name 35.196.122.68;
+    add_header X-Served-By 2100-web-01;
+    
+    location = /airbnb-onepage/ {
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+    }
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+    }
+    location /api {
+        proxy_pass http://127.0.0.1:5002/api;
+    }
+    location / {
+        proxy_pass http://127.0.0.1:5003/2-hbnb;
+    }
+    location /static/ {
+        proxy_pass http://127.0.0.1:5003;
+    }
+}
